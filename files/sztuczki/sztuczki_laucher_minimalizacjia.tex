@@ -1,0 +1,12 @@
+Kliknięcie ikony otwartego programu w Launcherze lewym przyciskiem myszy domyślnie powoduje wyświetlenie podglądu wszystkich otwartych okien tego programu. Większość programów korzysta jednak tylko z jednego okna i w takiej sytuacji kliknięcie ikony nie powoduje żadnej reakcji. Można zmienić zachowanie Launchera tak, aby po kliknięciu ikony programu o jednym oknie było ono minimalizowane.
+
+Opcja ta jest nieco zaszyta w systemie. Zaczniemy od instalacji odpowiedniego narzędzia. Uruchom \textcolor{ubuntu_orange}{Centrum Oprogramowania Ubuntu} i zainstaluj program \textcolor{ubuntu_orange}{Menedżer ustawień CompizConfig}.
+
+Alternatywnie, z wykorzystaniem konsoli:
+\begin{lstlisting}[language=bash]
+sudo apt-get install compizconfig-settings-manager
+\end{lstlisting}
+
+Uruchom dopiero co zainstalowany program. W Dashu znajdziesz go bardzo szybko, wpisując \textcolor{ubuntu_orange}{ccsm}. Włącz opcję \menu{{Ubuntu Unity Plugin}>{Zakładka Launcher}>{Minimize Single Window Applications (Unsupported)}}.
+
+Menedżer ustawień CompizConfig to bardzo potężne narzędzie, służące do konfiguracji środowiska graficznego. Potrafi zdziałać cuda, ale trzeba uważać, co się robi, gdyż wiele wtyczek jest ze sobą niekompatybilnych (przywracanie fabrycznych ustawień zostało opisane w rozdziale \ref{unity_reset}). Warto w nim pomyszkować, ale zalecamy ostrożność oraz dokładne czytanie komunikatów i podpowiedzi. Większość wprowadzanych w nim zmian jest widoczna natychmiast i nie wymaga restartu komputera.

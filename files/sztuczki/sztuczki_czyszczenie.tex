@@ -1,0 +1,41 @@
+Okresowe czyszczenie systemu Ubuntu nie jest potrzebne. Pewne rzeczy pozostają, ale nie mają one wpływu na szybkość działania systemu. Usuwanie oprogramowania może pozostawić trochę śmieci w systemie plików, ale nie wpływa to na szybkość działania. Jeżeli zachodzi potrzeba uwolnienia dodatkowego miejsca na dysku twardym, to poniższe porady mogą być pomocne.
+
+\subsubsection{Czyszczenie katalogu domowego programem Bleachbit}
+Korzystając z Centrum Oprogramowania Ubuntu znajdź i zainstaluj program \textcolor{ubuntu_orange}{Bleachbit}. Wyszuka on niepotrzebne i zaśmiecające katalog domowy pliki, np. miniatury albo zawartość pamięci podręcznej przeglądarek internetowych. Nie zalecamy korzystania z Bleachbita do dokonywania zmian w systemie (opcja APT). Takie rzeczy lepiej wykonać ręcznie.
+
+\subsubsection{Czyszczenie systemu zarządzania pakietami}
+Instalacja i usuwanie oprogramowania może pozostawić w komputerze dużo zbędnych plików. Poniższe polecenia usuną je z dysku twardego.
+\begin{itemize}
+\item Usunięcie pobranych archiwów z pakietami:
+\begin{lstlisting}[language=bash]
+sudo apt-get clean
+\end{lstlisting}
+\item Usunięcie starych archiwów z pakietami:
+\begin{lstlisting}[language=bash]
+sudo apt-get autoclean
+\end{lstlisting}
+\item Usunięcie nieużywanych pakietów:
+\begin{lstlisting}[language=bash]
+sudo apt-get autoremove
+\end{lstlisting}
+\end{itemize}
+
+Dodatkowo można się posłużyć programem \textcolor{ubuntu_orange}{deborphan}, który pomoże usunąć nieużywane pakiety. Najpierw go zainstauj:
+\begin{lstlisting}[language=bash]
+sudo apt-get install deborphan
+\end{lstlisting}
+A następnie wykorzystaj w ten sposób:
+\begin{lstlisting}[language=bash]
+sudo deborphan --guess-all | xargs sudo apt-get -y remove --purge
+\end{lstlisting}
+\begin{itemize}
+\item \textcolor{ubuntu_orange}{sudo} nakazuje wykonanie polecenia jako administrator;
+\item \textcolor{ubuntu_orange}{deborphan} program wyszukujący osierocone pakiety;
+\item \textcolor{ubuntu_orange}{\-\-quess-all} polecenie dla programu deborphan, nakazujące mu szukać we wszystkich pakietach;
+\item \textcolor{ubuntu_orange}{$\vert$} przekazanie wyniku działania (wyjścia) programu deborphan do drugiego programu (na jego wejście);
+\item \textcolor{ubuntu_orange}{sudo} nakazuje wykonanie polecenia jako administrator;
+\item \textcolor{ubuntu_orange}{apt-get} program zarządzający pakietami;
+\item \textcolor{ubuntu_orange}{-y} opcja programu apt-get, określająca, że z góry zgadzamy się na wszystkie działania;
+\item \textcolor{ubuntu_orange}{remove} polecenie programu apt-get, nakazujące mu usunąć wskazane programy;
+\item \textcolor{ubuntu_orange}{\-\-purge} polecenie programu apt-get, nakazujące mu usunąć również pozostałości (pliki konfiguracyjne, historię, ikony, itp).
+\end{itemize}

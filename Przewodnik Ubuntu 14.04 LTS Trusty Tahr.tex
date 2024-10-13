@@ -1,0 +1,264 @@
+%------------------
+% PRZEWODNIK PO UBUNTU 14.04 LTS TRUSTY THAR
+% 
+%
+
+%------------------
+% PREAMBUŁA
+%------------------
+
+% klasa mwart autorstwa Marcina Wolińskiego
+% http://marcinwolinski.pl/mwcls.html
+% pakiet: texlive-lang-polish
+\documentclass[a4paper,11pt,oneside]{mwart}
+
+% marginesy
+\usepackage[left=2cm, right=2cm, top=1.5cm, bottom=1.5cm]{geometry} 
+
+% interlinia	
+\linespread{1.3}
+
+% Język polski, polfonty
+\usepackage[utf8]{inputenc}
+\usepackage[OT4]{polski}
+\usepackage[polish]{babel}
+
+% dzielenie wierszy
+\widowpenalty=10000
+\clubpenalty=10000 
+\brokenpenalty=10000
+
+% Dla podpisów bez numerów \caption*
+\usepackage{caption}
+
+% Oficjalne kolory Ubuntu
+% http://design.ubuntu.com/brand/colour-palette
+\usepackage[table]{xcolor}
+\definecolor{ubuntu_orange}{RGB}{221,72,20}
+
+% Obrazki
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing} 
+
+% linki, URL
+\usepackage[urlcolor=blue, colorlinks=true]{hyperref}
+
+% opcje pdf
+\hypersetup{pdftitle=Przewodnik Ubuntu 14.04 LTS Trusty Tahr, pdfauthor=Zespół Ubuntu.pl,}
+
+% Dwie kolumny w spisie treści
+\usepackage[toc]{multitoc}
+
+% Tylko sekcje (section) i subsekcje (subsection) w spisie treści.
+% Bez subsubsekcji (subsubsection)
+\setcounter{tocdepth}{2}
+
+% Jako że nie bawimy się w rozdziały, sekcja i podsekcja są podstawowymi jednostkami podziału dokumentu.
+% Poniższa komenda wymusza numerowanie sekcji od "1" zamiast od "0"
+\renewcommand*\thesection{\arabic{section}}
+
+\usepackage[indentafter]{titlesec}
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% Tabele z określonymi szerokościami kolumn
+\usepackage{tabularx}
+
+% Nagłówek i stopka
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Listy
+\usepackage[shortlabels]{enumitem}
+
+% Mniejsza przerwa pomiędzy lista i paragrafem oraz pomiędzy elementami listy.
+\setlist[itemize]{noitemsep, topsep=0pt}
+\setlist[enumerate]{noitemsep, topsep=0pt}
+
+% Logo Ubuntu jako "punkt" listy
+\newcommand{\imageUbuntuCircleOfFriends}{\input{images/circle_of_friends}}
+\renewcommand{\labelitemi}{\imageUbuntuCircleOfFriends}
+
+% Listy numerowane - styl taki, jak na obrazkach.
+\newcommand*\circled[1]{\tikz{\node[shape=circle,fill=white,line width=2pt,draw=ubuntu_orange,inner sep=2pt] (char) {#1};}}
+
+% Przyciski klawiatury jako tekst, przechodzenie przez różne menu
+\usepackage{menukeys}
+\renewmenumacro{\directory}[>]{pathswithblackfolder}
+
+% Dla wyświetlania ładnie złożonych poleceń powłoki
+\usepackage{listings}
+\lstset{ 
+upquote=true,
+columns=fullflexible,
+backgroundcolor=\color{ubuntu_orange!5},
+frame=trBL,
+frameround=tttt,
+rulecolor=\color{ubuntu_orange},
+literate={*}{{\char42}}1
+		{-}{{\char45}}1
+		{ą}{{\k{a}}}1
+		{Ą}{{\k{A}}}1
+		{ę}{{\k{e}}}1
+		{Ę}{{\k{E}}}1
+		{ó}{{\'o}}1
+		{Ó}{{\'O}}1
+		{ś}{{\'s}}1
+		{Ś}{{\'S}}1
+		{ł}{{\l{}}}1
+		{Ł}{{\L{}}}1
+		{ż}{{\.z}}1
+		{Ż}{{\.Z}}1
+		{ź}{{\'z}}1
+		{Ź}{{\'Z}}1
+		{ć}{{\'c}}1
+		{Ć}{{\'C}}1
+		{ń}{{\'n}}1
+		{Ń}{{\'N}}1
+}
+
+% Nie chcemy dzielić tych słów pomiędzy wierszami.
+\hyphenation{Ubuntu}
+
+%------------------
+% STRUKTURA DOKUMENTU
+%------------------
+\begin{document}
+\input{files/strona_tytulowa}
+\input{files/spis_tresci}
+	\section{Wstęp}
+	\input{files/wstep_wprowadzenie}
+		\subsection{O Ubuntu}			
+			\input{files/wstep_o_ubuntu}
+		\subsection{Dlaczego warto zmienić system na Ubuntu?}
+			\input{files/wstep_dlaczego_zmienic}
+	\section{Instalacja Ubuntu}
+		\subsection{Pobieranie obrazu instalatora}
+			\input{files/instalacja/instalacja_pobieranie_obrazu}
+		\subsection{Nagrywanie pobranego obrazu}
+			\input{files/instalacja/instalacja_nagrywanie_obrazu}
+		\subsection{Przygotowanie do instalacji}
+			\input{files/instalacja/instalacja_przygotowanie}
+		\subsection{Uruchomienie instalatora}
+			\input{files/instalacja/instalacja_uruchomienie}
+		\subsection{Graficzny instalator Ubuntu}
+			\input{files/instalacja/instalacja_graficzny_instalator}
+		\subsection{Partycjonowanie dysku twardego}
+			\input{files/instalacja/instalacja_partycjonowanie}
+		\subsection{Instalacja na maszynie wirtualnej}
+			\input{files/instalacja/instalacja_virtualbox}
+		\subsection{Aktualizacja z poprzedniego wydania}
+			\input{files/instalacja/aktualizacja}
+		\subsection{Rozwiązywanie problemów z instalacją}
+			\input{files/instalacja/instalacja_rozwiazywanie_problemow}
+	\section{Pierwsze uruchomienie systemu}
+		\subsection{Uruchomienie systemu Ubuntu}
+			\input{files/pierwsze_uruchomienie/pierwsze_uruchomienie_boot}
+		\subsection{Ekran logowania}
+			\input{files/pierwsze_uruchomienie/pierwsze_uruchomienie_greater}
+		\subsection{Rzut oka na pulpit Ubuntu}
+			\input{files/pierwsze_uruchomienie/pierwsze_uruchomienie_pulpit}
+		\subsection{Instalacja oprogramowania}
+			\input{files/pierwsze_uruchomienie/instalacja_oprogramowania}
+		\subsection{Rzeczy do zrobienia po instalacji Ubuntu}
+			\input{files/pierwsze_uruchomienie/pierwsze_uruchomienie_aktualizacja_instalacja}
+	\section{Pulpit Ubuntu Unity}
+		\input{files/unity/unity}
+	\label{pulpit_unity}
+		\subsection{Pulpit}
+			\input{files/unity/unity_pulpit} 
+		\subsection{Panel menu}
+			\input{files/unity/unity_panel_menu}
+		\subsection{Launcher}
+			\input{files/unity/unity_launcher}
+		\subsection{Dash}
+			\input{files/unity/unity_dash}
+		\subsection{Obszary robocze}
+			\input{files/unity/unity_obszary_robocze}
+		\subsection{Zarządzanie oknami}
+			\input{files/unity/unity_zarzadanie_oknami}
+		\subsection{HUD --- Heads-Up Display}
+			\input{files/unity/unity_hud}
+		\subsection{Nautilus --- menadżer plików}
+			\input{files/unity/programy_nautilus}
+		\subsection{Konta sieciowe}
+			\input{files/unity/programy_kontaOnline}
+		\subsection{Empathy --- komunikator internetowy}
+			\input{files/unity/programy_empathy}
+		\subsection{Shotwell --- organizer zdjęć}
+			\input{files/unity/programy_shotwell}
+		\subsection{Firefox --- przeglądarka internetowa}
+			\input{files/unity/programy_firefox}
+		\subsection{Thunderbird --- klient pocztowy}
+			\input{files/unity/programy_thunderbird}
+		\subsection{Déjà Dup --- kopie zapasowe}
+			\input{files/unity/programy_dejavu}
+		\subsection{LibreOffice --- pakiet biurowy}
+			\input{files/unity/programy_libreoffice}
+		\subsection{Rhythmbox --- odtwarzacz muzyki}
+			\input{files/unity/programy_rhythmbox}
+		\subsection{Totem --- odtwarzacz filmów}
+			\input{files/unity/programy_totem}			
+	\section{Sztuczki z systemem Ubuntu}
+		\input{files/sztuczki/sztuczki}
+		\subsection{Wybór szybszych repozytoriów}
+			\input{files/sztuczki/sztuczki_serwer_lustrzany}
+		\subsection{Wyłączenie Global Menu}
+			\input{files/sztuczki/sztuczki_global_menu}
+		\subsection{Minimalizacja aplikacji poprzez kliknięcie na jej ikonę w Launcherze}
+			\input{files/sztuczki/sztuczki_laucher_minimalizacjia}
+		\subsection{Normalny wygląd pasków przewijania}
+			\input{files/sztuczki/paski_przewijania}
+		\subsection{Prywatność}
+			\input{files/sztuczki/sztuczki_prywatnosc}
+		\subsection{Unity Tweak Tool}
+			\input{files/sztuczki/sztuczki_unitytweaktool}
+		\subsection{Ubuntu Tweak}
+			\input{files/sztuczki/sztuczki_ubuntutweak}
+		\subsection{Instalacja nowych motywów graficznych}
+			\input{files/sztuczki/sztuczki_instalacja_motywu}
+		\subsection{Instalacja zestawu ikon}
+			\input{files/sztuczki/sztuczki_instalacja_ikon}
+		\subsubsection{Autostart}
+			\input{files/sztuczki/autostart}
+		\subsection{Folder domowy na pulpicie}
+			\input{files/sztuczki/sztuczki_home_na_pulpicie}
+		\subsection{Steam}
+			\input{files/sztuczki/sztuczki_steam}
+		\subsection{Wyłączenie raportowania błędów}
+			\input{files/sztuczki/apport}
+		\subsection{Odtwarzanie szyfrowanych płyt DVD}
+			\input{files/sztuczki/sztuczki_libdvdcss2}
+		\subsection{Przyspieszanie systemu poprzez lepsze wykorzystanie pamięci}
+			\input{files/sztuczki/sztuczki_preload}
+		\subsection{Oczyszczanie systemu}
+			\input{files/sztuczki/sztuczki_czyszczenie}
+		\subsection{Konfiguracja menu rozruchowego}
+			\input{files/sztuczki/sztuczki_grub_customizer}
+	\section{Rozwiązywanie problemów z Ubuntu}
+			\input{files/zaawansowane/rozwiazywanie_problemow}
+	\section{Tematy zaawansowane}
+		\subsection{Sterowniki do kart graficznych}
+			\input{files/zaawansowane/sterowniki}
+		\subsection{Firewall}
+			\input{files/zaawansowane/gufw}
+		\subsection{Antywirus}
+			\input{files/zaawansowane/clamav}
+		\subsection{Użytkownicy}
+			\input{files/zaawansowane/uzytkownicy}
+	\section{O Przewodniku}
+		\input{files/o_przewodniku}
+	\section{Dodatek 1: Skróty klawiszowe Unity}
+		\input{files/klawiszologia}
+	\section{Dodatek 2: Informator poleceń systemu Unix/Linux}
+		\input{files/polecenia}
+\end{document}
